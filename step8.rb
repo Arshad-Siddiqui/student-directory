@@ -34,12 +34,18 @@ def print_header
   puts "-------------"
 end
 
+# def print(students)
+#   students.each_with_index do |student, index|
+#     if student[:name].length > 12 then next end
+#     puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+#   end
+# end
+
 def print(students)
-  puts 'Which character would you like the names to start with?'
-  first_character = gets.chomp
-  students.each_with_index do |student, index|
-    if !student[:name].start_with? first_character then next end
-    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+  i = 0
+  until i == students.length
+    puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort)"
+    i += 1
   end
 end
 
