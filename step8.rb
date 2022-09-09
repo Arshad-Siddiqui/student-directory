@@ -14,34 +14,34 @@
 # ]
 
 def input_students
-  puts 'Please enter the names of the students and then the country of birth'
+  puts 'Please enter the names of the students'
   puts 'To finish, just hit return twice'
 
   students = []
 
-  loop do
-    name = gets.chomp
-    if name.empty? then break end
-    country = gets.chomp
-    students << {name: name, cohort: :november, country: country}
+  name = gets.chomp
+  # While name is not empty repeat this code.
+  while !name.empty? do
+    students << {name: name, cohort: :november}
     puts "Now we have #{students.count} students"
+    name = gets.chomp
   end
   students
 end
 
 def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
+  puts "The students of Villains Academy".center 60
+  puts "-------------".center 60
 end
 
 def print(students)
   students.each_with_index do |student, index|
-    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort) #{student[:country]}"
+    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)".center 60
   end
 end
 
 def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
+  puts "Overall, we have #{names.count} great students".center 60
 end
 
 students = input_students
