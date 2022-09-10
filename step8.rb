@@ -14,40 +14,56 @@
 # ]
 
 def input_students
-  puts 'Please enter the names of the students and then the cohort'
+  puts 'Please enter the names of the students and then their cohort'
   puts 'To finish, just hit return twice'
 
   students = []
 
-  name = gets.chomp.to_sym
-  cohort = gets.chomp.to_sym
   # While name is not empty repeat this code.
   loop do
+    name = gets.chomp
+    break if name.empty?
+    cohort = gets.chomp.to_sym
     students << {name: name, cohort: cohort}
     puts "Now we have #{students.count} students"
-    name = gets.chomp.to_sym
-    if name.empty? then break end
-    cohort = gets.chomp.to_sym
   end
   students
 end
 
 def print_header
-  puts "The students of Villains Academy".center 60
-  puts "-------------".center 60
+  puts "The students of Villains Academy"
+  puts "-------------"
 end
 
 def print(students)
   students.each_with_index do |student, index|
-    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)".center 60
+    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
 def print_footer(names)
-  puts "Overall, we have #{names.count} great students".center 60
+  puts "Overall, we have #{names.count} great students"
+end
+
+def organise_by_cohort(students)
+  # Create a list of cohorts
+  cohort_list = students.map do |student|
+    student[:cohort]
+  end
+  # Removes duplicates from that list
+  compact_list = cohort_list.uniq
+
+  students_organised = []
+  compact_list.each do |value|
+    students.each do |student|
+      if student[:cohort] == value then students_organised.push(student) end
+    end
+  end
+  students_organised
 end
 
 students = input_students
+organised_students = organise_by_cohort(students)
 print_header
-print(students)
+print(organised_students)
 print_footer(students)
