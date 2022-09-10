@@ -25,7 +25,7 @@ def input_students
     break if name.empty?
     cohort = gets.chomp.to_sym
     students << {name: name, cohort: cohort}
-    puts "Now we have #{students.count} students"
+    puts students.length != 1 ? "Now we have #{students.count} students" : "Now we have #{students.count} student"
   end
   students
 end
