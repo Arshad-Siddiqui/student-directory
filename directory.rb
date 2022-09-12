@@ -47,9 +47,7 @@ end
 def interactive_menu
   students = []
   loop do
-    puts '1. Input the students'
-    puts '2. Show the students'
-    puts '9. Exit'
+    print_menu
     selection = gets.chomp
     case selection
       when '1'
@@ -66,4 +64,9 @@ def interactive_menu
   end
 end
 
+def print_menu
+  puts '1. Input the students'
+  puts '2. Show the students'
+  puts '9. Exit'
+end
 interactive_menu
