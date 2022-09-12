@@ -46,17 +46,7 @@ end
 def interactive_menu
   loop do
     print_menu
-    selection = gets.chomp
-    case selection
-      when '1'
-        @students = input_students
-      when '2'
-        show_students
-      when '9'
-        exit
-      else
-        puts "I don't know what you meant, try again."
-    end
+    process
   end
 end
 
@@ -71,4 +61,19 @@ def show_students
   print
   print_footer
 end
+
+def process
+  selection = gets.chomp
+    case selection
+      when '1'
+        @students = input_students
+      when '2'
+        show_students
+      when '9'
+        exit
+      else
+        puts "I don't know what you meant, try again."
+    end
+end
+
 interactive_menu
