@@ -14,6 +14,17 @@
 # ]
 @students = []
 
+def save_students
+  # Open file for writing
+  file = File.open("students.csv", 'w')
+  @students.each do |student|
+    student_data = [student[:name], student[:cohort]]
+    csv_line = student_data.join(',')
+    file.puts csv_line
+  end
+  file.close
+end
+
 def input_students
   puts 'Please enter the names of the students'
   puts 'To finish, just hit return twice'
